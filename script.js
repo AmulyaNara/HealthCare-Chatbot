@@ -126,7 +126,7 @@ function sendMessage() {
     chatbox.scrollTop = chatbox.scrollHeight;
   })
   .catch(error => {
-    botDiv.innerHTML = "<b>Bot:</b> ⚠️ Error connecting to backend.";
+    botDiv.innerHTML = "<b>Bot:</b> Error connecting to backend.";
     console.error("Backend error:", error);
   })
   .finally(() => {

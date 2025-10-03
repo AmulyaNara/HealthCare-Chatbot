@@ -41,6 +41,11 @@ async def query_pdf(q: Query):
         answer = "⚠️ LLM error (check API key)."
 
     return {"answer": answer}
+@app.get("/")
+async def home():
+    return {"message": "Backend is running!"}
+
     
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
+    

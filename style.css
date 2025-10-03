@@ -1,0 +1,161 @@
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Choice buttons horizontal */
+#choiceArea {
+  display: flex;
+  justify-content: space-around;  /* side by side */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#choiceArea button {
+  padding: 10px 20px;
+  background: #0078ff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#choiceArea button:hover {
+  background: #005bb5;
+}
+
+/* Login & Signup forms vertical */
+#loginArea, #signupArea {
+  display: flex;
+  flex-direction: column;   /* vertical stacking */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#loginArea input, #signupArea input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+#loginArea button, #signupArea button {
+  width: 50%;
+  padding: 10px 0;
+  border-radius: 20px;
+  background: #0078ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#loginArea button:hover, #signupArea button:hover {
+  background: #005bb5;
+}
+
+/* Chatbox */
+#chatbox {
+  width: 100%;
+  height: 400px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.user-message {
+  text-align: right;
+  background: #0078ff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin: 5px 0;
+  display: inline-block;
+  max-width: 70%;
+}
+
+.bot-message {
+  text-align: left;
+  background: #e4e6eb;
+  color: black;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin: 5px 0;
+  display: inline-block;
+  max-width: 70%;
+}
+
+/* Chat input */
+#inputArea {
+  display: flex;
+  width: 100%;
+}
+
+#userInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+#inputArea button {
+  margin-left: 5px;
+  padding: 10px 15px;
+  background: #0078ff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#inputArea button:hover {
+  background: #005bb5;
+}
+#choiceArea {
+  display: flex;
+  justify-content: center; /* center the buttons */
+  gap: 20px;               /* space between buttons */
+  width: 100%;
+  margin-bottom: 20px;
+}
+#chatSection button.logout-btn {
+  margin-top: 10px;
+  background: #0078ff; /* same as send button */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+#chatSection button.logout-btn:hover {
+  background: #005bb5;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot Login/Signup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1> My Chatbot</h1>
+
+  <div id="container">
+    <!-- Choice Section -->
+    <div id="choiceArea">
+      <button onclick="showLogin()">Login</button>
+      <button onclick="showSignup()">Sign Up</button>
+    </div>
+
+    <!-- Login Section -->
+    <div id="loginArea" style="display: none;">
+      <input type="email" id="loginEmail" placeholder="Enter your email">
+      <input type="password" id="loginPassword" placeholder="Enter your password">
+      <button onclick="login()">Login</button>
+      <p id="loginError" style="color:red;"></p>
+    </div>
+
+    <!-- Signup Section -->
+    <div id="signupArea" style="display: none;">
+      <input type="email" id="signupEmail" placeholder="Enter your email">
+      <input type="password" id="signupPassword" placeholder="Enter a strong password">
+      <button onclick="signup()">Sign Up</button>
+      <p id="signupError" style="color:red;"></p>
+    </div>
+
+    <!-- Chat Section -->
+    <div id="chatSection" style="display: none;">
+      <div id="chatbox">
+        <div class="bot-message"><b>Bot:</b> Hello! Please login or sign up to start chatting.</div>
+      </div>
+      <div id="inputArea">
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+      <button style="margin-top:10px; background:#ff4d4d;" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

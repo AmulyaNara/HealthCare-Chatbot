@@ -1,0 +1,36 @@
+# Simple Chatbot with Login and Signup
+
+This is a **web-based chatbot application** built using **HTML, CSS, and JavaScript**. The chatbot supports user authentication with **Login** and **Sign Up**, and provides a simple interactive chat interface.
+
+---
+
+## Features
+
+1. **User Authentication**
+   - Users can **Sign Up** with email and password.
+   - Passwords are validated for **strength** (minimum 8 characters, uppercase, lowercase, number, special character).
+   - Existing users can **Login** using their credentials.
+   - Login and Sign Up forms are displayed vertically, and the choice buttons are horizontal.
+
+2. **Chat Functionality**
+   - Users can send messages in the chatbox.
+   - The bot responds with simple predefined replies:
+     - “Hello” / “Hi” → “Hello!”
+     - “Bye” → “Goodbye! ”
+     - Other inputs → “Sorry, I don't understand.”
+   - Pressing **Enter** key works for both:
+     - Sending messages in chat.
+     - Submitting login or signup forms.
+
+3. **Logout**
+   - Users can log out, which returns them to the choice buttons.
+   - Logout button styling matches the chat Send button.
+
+4. **Responsive UI**
+   - Chatbox and forms are **centered vertically and horizontally**.
+   - Clean and modern design similar to ChatGPT style.
+
+---
+
+## Project Structure
+

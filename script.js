@@ -66,13 +66,13 @@ function login() {
   let users = JSON.parse(localStorage.getItem("users")) || {};
 
   if (users[email] && users[email] === password) {
-    alert("Login successful ");
+    alert("Login successful");
     document.getElementById("loginArea").style.display = "none";
     document.getElementById("chatSection").style.display = "block";
-    document.getElementById("chatbox").innerHTML = 
-      `<div class="bot-message"><b>Bot:</b> Welcome, ${email}! </div>`;
+    document.getElementById("chatbox").innerHTML =
+      `<div class="bot-message"><b>Bot:</b> Welcome, ${email}!</div>`;
   } else {
-    error.textContent = "Invalid email or password ";
+    error.textContent = "Invalid email or password";
   }
 }
 
@@ -90,58 +90,60 @@ function logout() {
 
 // Send message function
 function sendMessage() {
-  let input = document.getElementById("userInput").value;
+  let inputEl = document.getElementById("userInput");
   let chatbox = document.getElementById("chatbox");
+  let input = inputEl.value.trim();
 
-  if (input.trim() === "") return;
+  if (input === "") return;
 
   // Show user message
   let userDiv = document.createElement("div");
   userDiv.className = "user-message";
   userDiv.innerHTML = "<b>You:</b> " + input;
   chatbox.appendChild(userDiv);
+  chatbox.scrollTop = chatbox.scrollHeight;
 
-  // Bot reply
-  let botReply = "";
-  if (input.toLowerCase().includes("hello") || input.toLowerCase().includes("hi")) {
-    botReply = "Hello!";
-  } else if (input.toLowerCase().includes("bye")) {
-    botReply = "Goodbye!";
-  } else {
-    botReply = "Sorry, I don't understand.";
-  }
+  // Clear input and disable while waiting
+  inputEl.value = "";
+  inputEl.disabled = true;
 
+  // Show temporary bot typing
   let botDiv = document.createElement("div");
   botDiv.className = "bot-message";
-  botDiv.innerHTML = "<b>Bot:</b> " + botReply;
+  botDiv.innerHTML = "<b>Bot:</b> typing...";
   chatbox.appendChild(botDiv);
-
-  document.getElementById("userInput").value = "";
   chatbox.scrollTop = chatbox.scrollHeight;
+
+  // Call backend API
+  fetch("http://127.0.0.1:8000/query", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query: input })
+  })
+  .then(response => response.json())
+  .then(data => {
+    botDiv.innerHTML = "<b>Bot:</b> " + (data.answer || "No answer received.");
+    chatbox.scrollTop = chatbox.scrollHeight;
+  })
+  .catch(error => {
+    botDiv.innerHTML = "<b>Bot:</b> ⚠️ Error connecting to backend.";
+    console.error("Backend error:", error);
+  })
+  .finally(() => {
+    inputEl.disabled = false;
+    inputEl.focus();
+  });
 }
 
-// Press Enter to send message
-document.addEventListener("keypress", function(event) {
-  if (event.key === "Enter" && document.getElementById("userInput") === document.activeElement) {
-    sendMessage();
-  }
-});
-
-// Trigger login or signup on Enter key
+// Trigger login, signup, or send message on Enter key
 document.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
-    // If chat input is focused → send message
     if (document.getElementById("userInput") === document.activeElement) {
       sendMessage();
-    }
-    // If login form is visible → trigger login
-    else if (document.getElementById("loginArea").style.display === "flex") {
+    } else if (document.getElementById("loginArea").style.display === "flex") {
       login();
-    }
-    // If signup form is visible → trigger signup
-    else if (document.getElementById("signupArea").style.display === "flex") {
+    } else if (document.getElementById("signupArea").style.display === "flex") {
       signup();
     }
   }
 });
-
